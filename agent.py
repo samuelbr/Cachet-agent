@@ -136,7 +136,7 @@ class CachetAgent(object):
     self.logger.debug('Update component #%d status to %d', component_id, state)
   
   def _update_component_exception(self, component_id, err):
-    self._update_component(self, component_id, 4, str(err))
+    self._update_component(component_id, 4, str(err))
     
   def run(self):
     if len(self._probes) == 0:
