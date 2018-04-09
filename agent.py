@@ -8,6 +8,7 @@ import logging
 import argparse
 import cachetclient.cachet as cachet
 import requests
+import sys
 
 """
 pip install python-cachetclient
@@ -150,7 +151,7 @@ class CachetAgent(object):
           self._update_component(component_id, state, description)
           
         except Exception as err:
-          self.logger.error('Catch %s', err)
+          self.logger.exception('Catch %s', err)
           self._update_component_exception(component_id, err)
       
       #wait
@@ -225,7 +226,7 @@ def process_params(args):
   return params
 
 def exit_on_error(msg, parser):
-  print(msg)
+  print(msg, file=sys.stderr)
   print()
   parser.print_help()
   exit(1)
